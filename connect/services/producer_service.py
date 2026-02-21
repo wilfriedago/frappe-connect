@@ -5,6 +5,7 @@ Handles the full producer flow:
 2. Condition evaluated
 3. Background job enqueued (after commit)
 """
+
 import json
 from datetime import date, datetime
 
@@ -19,7 +20,11 @@ from connect.kafka.serialization import (
 )
 from connect.services.mapping_service import build_payload
 from connect.services.schema_service import get_schema
-from connect.utils.idempotency import check_idempotency, generate_idempotency_key, generate_uuid
+from connect.utils.idempotency import (
+    check_idempotency,
+    generate_idempotency_key,
+    generate_uuid,
+)
 from connect.utils.logging import log_error, log_info
 
 
@@ -62,7 +67,9 @@ def on_document_event(doc, method: str):
             # Evaluate condition
             if rule.condition:
                 try:
-                    result = frappe.safe_eval(rule.condition, eval_globals={"doc": doc, "frappe": frappe})
+                    result = frappe.safe_eval(
+                        rule.condition, eval_globals={"doc": doc, "frappe": frappe}
+                    )
                     if not result:
                         continue
                 except Exception as e:
@@ -91,7 +98,11 @@ def on_document_event(doc, method: str):
             )
 
     except Exception as e:
-        log_error("Document event handler error", f"doctype={doc.doctype}, method={method}", exc=e)
+        log_error(
+            "Document event handler error",
+            f"doctype={doc.doctype}, method={method}",
+            exc=e,
+        )
 
 
 def get_matching_rules(doctype: str, event_name: str) -> list:
@@ -103,8 +114,17 @@ def get_matching_rules(doctype: str, event_name: str) -> list:
             "source_doctype": doctype,
             "document_event": event_name,
         },
-        fields=["name", "rule_name", "command_type", "command_category", "condition",
-                "avro_schema_name", "topic_override", "tenant_id_override", "priority"],
+        fields=[
+            "name",
+            "rule_name",
+            "command_type",
+            "command_category",
+            "condition",
+            "avro_schema_name",
+            "topic_override",
+            "tenant_id_override",
+            "priority",
+        ],
         order_by="priority asc",
     )
     return rules
@@ -133,7 +153,9 @@ def produce_message(
         return
 
     # Create Kafka Log (Pending)
-    from connect.fineract_kafka.doctype.fineract_kafka_log.fineract_kafka_log import FineractKafkaLog
+    from connect.connect.doctype.fineract_kafka_log.fineract_kafka_log import (
+        FineractKafkaLog,
+    )
 
     log = FineractKafkaLog.log_produced(
         idempotency_key=idempotency_key,
@@ -197,7 +219,11 @@ def produce_message(
 
         # Optionally log payload
         if settings.log_payload_on_success:
-            log.db_set("payload_json", json.dumps(payload_dict, default=str), update_modified=False)
+            log.db_set(
+                "payload_json",
+                json.dumps(payload_dict, default=str),
+                update_modified=False,
+            )
 
         log_info(
             "Message produced",
