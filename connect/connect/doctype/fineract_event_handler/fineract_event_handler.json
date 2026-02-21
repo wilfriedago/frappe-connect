@@ -1,0 +1,107 @@
+{
+  "doctype": "DocType",
+  "name": "Fineract Event Handler",
+  "module": "Fineract Kafka",
+  "custom": 0,
+  "istable": 0,
+  "is_submittable": 0,
+  "track_changes": 1,
+  "engine": "InnoDB",
+  "autoname": "field:handler_name",
+  "naming_rule": "By fieldname",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "field_order": [
+    "handler_name",
+    "enabled",
+    "event_section",
+    "business_event_type",
+    "event_category",
+    "condition",
+    "actions_section",
+    "actions",
+    "notes_section",
+    "description"
+  ],
+  "fields": [
+    {
+      "fieldname": "handler_name",
+      "fieldtype": "Data",
+      "label": "Handler Name",
+      "reqd": 1,
+      "unique": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "label": "Enabled",
+      "default": "1",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "event_section",
+      "fieldtype": "Section Break",
+      "label": "Event Matching"
+    },
+    {
+      "fieldname": "business_event_type",
+      "fieldtype": "Data",
+      "label": "Business Event Type",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1,
+      "description": "e.g. ClientCreatedBusinessEvent"
+    },
+    {
+      "fieldname": "event_category",
+      "fieldtype": "Data",
+      "label": "Event Category",
+      "description": "e.g. CLIENT, LOAN"
+    },
+    {
+      "fieldname": "condition",
+      "fieldtype": "Code",
+      "label": "Condition",
+      "options": "Python",
+      "description": "Optional Python expression. 'payload' dict is in scope. Must return truthy."
+    },
+    {
+      "fieldname": "actions_section",
+      "fieldtype": "Section Break",
+      "label": "Actions"
+    },
+    {
+      "fieldname": "actions",
+      "fieldtype": "Table",
+      "label": "Actions",
+      "options": "Fineract Event Handler Action",
+      "reqd": 1
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Notes",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "import": 1
+    }
+  ]
+}

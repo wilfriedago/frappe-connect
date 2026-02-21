@@ -1,33 +1,42 @@
-### Connect
+# Connect — Kafka-Fineract Integration Bridge
 
-Fineract connect
+Bidirectional event bridge between Frappe/ERPNext and Apache Fineract via Apache Kafka.
 
-### Installation
+## Features
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+- **Producer:** Translates Frappe document lifecycle events into Fineract external commands
+- **Consumer:** Translates Fineract business events back into Frappe document actions
+- **Configuration-driven:** New commands/events added via DocTypes, not code
+- **Two-tier Avro serialization:** Inner raw payload + Confluent Schema Registry envelope
+- **Three-layer schema cache:** Redis → MariaDB → Schema Registry
+- **Full observability:** Every message logged with status tracking and correlation
+
+## Prerequisites
+
+- `librdkafka` installed (`brew install librdkafka` on macOS, `apt-get install librdkafka-dev` on Debian)
+- Apache Kafka + Confluent Schema Registry (see `docker-compose.kafka.yml`)
+- Frappe Tweaks app installed (for Sync Job support)
+
+## Installation
 
 ```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch version-16
-bench install-app connect
+bench get-app connect
+bench --site your-site install-app connect
+bench --site your-site migrate
 ```
 
-### Contributing
+## Setup
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+1. Start Kafka infrastructure: `docker compose -f docker-compose.kafka.yml up -d`
+2. Configure **Fineract Kafka Settings** in Desk
+3. Create **Fineract Event Emission Rules** for producer
+4. Create **Fineract Event Handlers** for consumer
+5. Start consumer: `bench connect-consumer --site your-site`
 
-```bash
-cd apps/connect
-pre-commit install
-```
+## Architecture
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+See [plan.md](../../plan.md) for the full architecture document.
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+## License
 
-### License
-
-mit
+MIT

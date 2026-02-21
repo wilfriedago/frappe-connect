@@ -1,0 +1,110 @@
+{
+  "doctype": "DocType",
+  "name": "Fineract Field Mapping",
+  "module": "Fineract Kafka",
+  "custom": 0,
+  "istable": 1,
+  "editable_grid": 1,
+  "track_changes": 0,
+  "engine": "InnoDB",
+  "field_order": [
+    "avro_field",
+    "avro_type",
+    "source_type",
+    "mapping_column",
+    "source_field",
+    "source_expression",
+    "static_value",
+    "method_path",
+    "options_column",
+    "is_nullable",
+    "default_value"
+  ],
+  "fields": [
+    {
+      "fieldname": "avro_field",
+      "fieldtype": "Data",
+      "label": "Avro Field",
+      "reqd": 1,
+      "in_list_view": 1,
+      "columns": 2,
+      "description": "Target field name in Avro schema"
+    },
+    {
+      "fieldname": "avro_type",
+      "fieldtype": "Select",
+      "label": "Avro Type",
+      "options": "string\nlong\nint\nboolean\nbytes",
+      "default": "string",
+      "in_list_view": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "source_type",
+      "fieldtype": "Select",
+      "label": "Source Type",
+      "options": "Field\nExpression\nStatic\nMethod",
+      "default": "Field",
+      "reqd": 1,
+      "in_list_view": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "mapping_column",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "source_field",
+      "fieldtype": "Data",
+      "label": "Source Field",
+      "in_list_view": 1,
+      "columns": 2,
+      "depends_on": "eval:doc.source_type=='Field'",
+      "mandatory_depends_on": "eval:doc.source_type=='Field'",
+      "description": "Frappe document field name"
+    },
+    {
+      "fieldname": "source_expression",
+      "fieldtype": "Small Text",
+      "label": "Source Expression",
+      "depends_on": "eval:doc.source_type=='Expression'",
+      "mandatory_depends_on": "eval:doc.source_type=='Expression'",
+      "description": "Python expression with 'doc' in scope"
+    },
+    {
+      "fieldname": "static_value",
+      "fieldtype": "Data",
+      "label": "Static Value",
+      "depends_on": "eval:doc.source_type=='Static'",
+      "mandatory_depends_on": "eval:doc.source_type=='Static'"
+    },
+    {
+      "fieldname": "method_path",
+      "fieldtype": "Data",
+      "label": "Method Path",
+      "depends_on": "eval:doc.source_type=='Method'",
+      "mandatory_depends_on": "eval:doc.source_type=='Method'",
+      "description": "Dotted Python path, e.g. connect.utils.transforms.get_office_id"
+    },
+    {
+      "fieldname": "options_column",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "is_nullable",
+      "fieldtype": "Check",
+      "label": "Is Nullable",
+      "default": "0",
+      "in_list_view": 1,
+      "columns": 1,
+      "description": "Whether the Avro field is a union with null"
+    },
+    {
+      "fieldname": "default_value",
+      "fieldtype": "Data",
+      "label": "Default Value",
+      "description": "Used when source resolves to None and field is not nullable"
+    }
+  ],
+  "permissions": []
+}

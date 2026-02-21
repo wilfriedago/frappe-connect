@@ -1,0 +1,226 @@
+{
+  "doctype": "DocType",
+  "name": "Fineract Kafka Log",
+  "module": "Fineract Kafka",
+  "custom": 0,
+  "istable": 0,
+  "is_submittable": 0,
+  "track_changes": 0,
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "naming_rule": "",
+  "sort_field": "creation",
+  "sort_order": "DESC",
+  "field_order": [
+    "direction",
+    "status",
+    "kafka_section",
+    "topic",
+    "partition",
+    "offset",
+    "kafka_column",
+    "message_key",
+    "idempotency_key",
+    "type_section",
+    "command_type",
+    "event_type",
+    "tenant_id",
+    "source_section",
+    "source_doctype",
+    "source_docname",
+    "source_column",
+    "rule_name",
+    "handler_name",
+    "correlated_log",
+    "payload_section",
+    "payload_json",
+    "error_section",
+    "error_message",
+    "error_traceback",
+    "retry_section",
+    "retry_count",
+    "processed_at"
+  ],
+  "fields": [
+    {
+      "fieldname": "direction",
+      "fieldtype": "Select",
+      "label": "Direction",
+      "options": "Produced\nConsumed",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Pending\nSent\nDelivered\nFailed\nProcessed\nSkipped\nDead Letter",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "kafka_section",
+      "fieldtype": "Section Break",
+      "label": "Kafka Metadata"
+    },
+    {
+      "fieldname": "topic",
+      "fieldtype": "Data",
+      "label": "Topic",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "partition",
+      "fieldtype": "Int",
+      "label": "Partition"
+    },
+    {
+      "fieldname": "offset",
+      "fieldtype": "Int",
+      "label": "Offset"
+    },
+    {
+      "fieldname": "kafka_column",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "message_key",
+      "fieldtype": "Data",
+      "label": "Message Key"
+    },
+    {
+      "fieldname": "idempotency_key",
+      "fieldtype": "Data",
+      "label": "Idempotency Key",
+      "unique": 1,
+      "search_index": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "type_section",
+      "fieldtype": "Section Break",
+      "label": "Message Type"
+    },
+    {
+      "fieldname": "command_type",
+      "fieldtype": "Data",
+      "label": "Command Type",
+      "in_standard_filter": 1,
+      "description": "For produced messages"
+    },
+    {
+      "fieldname": "event_type",
+      "fieldtype": "Data",
+      "label": "Event Type",
+      "in_standard_filter": 1,
+      "description": "For consumed messages"
+    },
+    {
+      "fieldname": "tenant_id",
+      "fieldtype": "Data",
+      "label": "Tenant ID"
+    },
+    {
+      "fieldname": "source_section",
+      "fieldtype": "Section Break",
+      "label": "Source / Handler"
+    },
+    {
+      "fieldname": "source_doctype",
+      "fieldtype": "Link",
+      "label": "Source DocType",
+      "options": "DocType",
+      "search_index": 1
+    },
+    {
+      "fieldname": "source_docname",
+      "fieldtype": "Dynamic Link",
+      "label": "Source Document",
+      "options": "source_doctype"
+    },
+    {
+      "fieldname": "source_column",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "rule_name",
+      "fieldtype": "Link",
+      "label": "Emission Rule",
+      "options": "Fineract Event Emission Rule"
+    },
+    {
+      "fieldname": "handler_name",
+      "fieldtype": "Link",
+      "label": "Event Handler",
+      "options": "Fineract Event Handler"
+    },
+    {
+      "fieldname": "correlated_log",
+      "fieldtype": "Link",
+      "label": "Correlated Log",
+      "options": "Fineract Kafka Log",
+      "description": "Links Produced ↔ Consumed messages"
+    },
+    {
+      "fieldname": "payload_section",
+      "fieldtype": "Section Break",
+      "label": "Payload",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "payload_json",
+      "fieldtype": "Code",
+      "label": "Payload JSON",
+      "options": "JSON",
+      "description": "Snapshot of the message payload (controlled by settings)"
+    },
+    {
+      "fieldname": "error_section",
+      "fieldtype": "Section Break",
+      "label": "Error Details",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "error_message",
+      "fieldtype": "Small Text",
+      "label": "Error Message"
+    },
+    {
+      "fieldname": "error_traceback",
+      "fieldtype": "Code",
+      "label": "Error Traceback",
+      "options": "Python"
+    },
+    {
+      "fieldname": "retry_section",
+      "fieldtype": "Section Break",
+      "label": "Processing"
+    },
+    {
+      "fieldname": "retry_count",
+      "fieldtype": "Int",
+      "label": "Retry Count",
+      "default": "0"
+    },
+    {
+      "fieldname": "processed_at",
+      "fieldtype": "Datetime",
+      "label": "Processed At"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1
+    }
+  ]
+}

@@ -1,8 +1,10 @@
 app_name = "connect"
 app_title = "Connect"
 app_publisher = "BFT Group"
-app_description = "Fineract connect"
-app_email = "wilfried.ago@bftgroup.co"
+app_description = "Kafka-Fineract Integration Bridge for Frappe/ERPNext"
+app_icon = "octicon octicon-plug"
+app_color = "#2E86C1"
+app_email = "dev@bftgroup.com"
 app_license = "mit"
 
 # Apps
@@ -132,34 +134,43 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+    "*": {
+        "after_insert": "connect.services.producer_service.on_document_event",
+        "on_update": "connect.services.producer_service.on_document_event",
+        "on_submit": "connect.services.producer_service.on_document_event",
+        "on_cancel": "connect.services.producer_service.on_document_event",
+        "on_trash": "connect.services.producer_service.on_document_event",
+    }
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"connect.tasks.all"
-# 	],
-# 	"daily": [
-# 		"connect.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"connect.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"connect.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"connect.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	# "all": [
+	# 	"connect.tasks.all"
+	# ],
+    # Cleanup old Kafka logs daily at midnight
+    "daily": [
+        "connect.jobs.cleanup.cleanup_kafka_logs",
+    ],
+	# "hourly": [
+	# 	"connect.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"connect.tasks.weekly"
+	# ],
+	# "monthly": [
+	# 	"connect.tasks.monthly"
+	# ],
+    # Refresh schema cache every 6 hours
+    "cron": {
+        "0 */6 * * *": [
+            "connect.services.schema_service.refresh_schema_cache",
+        ],
+    },
+}
 
 # Testing
 # -------
@@ -249,4 +260,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

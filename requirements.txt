@@ -1,0 +1,31 @@
+# Main dependency for Kafka client,
+confluent-kafka==2.13.0
+
+# Dependencies for schema registry client, https://github.com/confluentinc/confluent-kafka-python/blob/master/requirements/requirements-schemaregistry.txt
+attrs>=21.2.0
+cachetools>=5.5.0
+certifi
+httpx>=0.28.1
+authlib>=1.0.0
+
+# Dependencies for avro, https://github.com/confluentinc/confluent-kafka-python/blob/master/requirements/requirements-avro.txt
+fastavro >= 1.5.4, < 1.8.0; python_version == "3.7"
+fastavro >= 1.5.4, < 2; python_version > "3.7"
+requests
+avro>=1.11.1,<2
+
+
+# Dependencies for json, https://github.com/confluentinc/confluent-kafka-python/blob/master/requirements/requirements-json.txt
+pyrsistent
+jsonschema >= 4.18.0
+orjson >= 3.10
+
+# Dependencies for protobuf, https://github.com/confluentinc/confluent-kafka-python/blob/master/requirements/requirements-protobuf.txt
+googleapis-common-protos
+protobuf
+
+# Dependencies for documentation, https://github.com/confluentinc/confluent-kafka-python/blob/master/requirements/requirements-docs.txt
+sphinx
+sphinx-rtd-theme
+tomli; python_version < "3.11"
+pandoc
