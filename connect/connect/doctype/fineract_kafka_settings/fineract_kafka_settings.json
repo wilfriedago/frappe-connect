@@ -1,15 +1,7 @@
 {
-  "doctype": "DocType",
-  "name": "Fineract Kafka Settings",
-  "module": "Connect",
   "custom": 0,
-  "is_single": 1,
-  "istable": 0,
-  "is_submittable": 0,
-  "track_changes": 1,
+  "doctype": "DocType",
   "engine": "InnoDB",
-  "sort_field": "modified",
-  "sort_order": "DESC",
   "field_order": [
     "connection_tab",
     "enabled",
@@ -70,19 +62,19 @@
       "label": "Connection"
     },
     {
+      "default": "0",
+      "description": "Master on/off for all Kafka operations",
       "fieldname": "enabled",
       "fieldtype": "Check",
-      "label": "Enabled",
-      "default": "0",
-      "description": "Master on/off for all Kafka operations"
+      "label": "Enabled"
     },
     {
+      "default": "Development",
+      "description": "Informational, used in logging",
       "fieldname": "environment",
       "fieldtype": "Select",
       "label": "Environment",
-      "options": "Development\nStaging\nProduction",
-      "default": "Development",
-      "description": "Informational, used in logging"
+      "options": "Development\nStaging\nProduction"
     },
     {
       "fieldname": "kafka_section",
@@ -90,92 +82,92 @@
       "label": "Kafka Connection"
     },
     {
+      "default": "localhost:9092",
+      "description": "Comma-separated list of Kafka broker addresses",
       "fieldname": "kafka_bootstrap_servers",
       "fieldtype": "Data",
       "label": "Bootstrap Servers",
-      "default": "localhost:9092",
-      "reqd": 1,
-      "description": "Comma-separated list of Kafka broker addresses"
-    },
-    {
-      "fieldname": "schema_registry_url",
-      "fieldtype": "Data",
-      "label": "Schema Registry URL",
-      "default": "http://localhost:8081",
       "reqd": 1
     },
     {
-      "fieldname": "security_section",
-      "fieldtype": "Section Break",
-      "label": "Security",
-      "collapsible": 1
+      "default": "http://localhost:8081",
+      "fieldname": "schema_registry_url",
+      "fieldtype": "Data",
+      "label": "Schema Registry URL",
+      "reqd": 1
     },
     {
+      "collapsible": 1,
+      "fieldname": "security_section",
+      "fieldtype": "Section Break",
+      "label": "Security"
+    },
+    {
+      "default": "PLAINTEXT",
       "fieldname": "security_protocol",
       "fieldtype": "Select",
       "label": "Security Protocol",
-      "options": "PLAINTEXT\nSASL_SSL\nSSL\nSASL_PLAINTEXT",
-      "default": "PLAINTEXT"
+      "options": "PLAINTEXT\nSASL_SSL\nSSL\nSASL_PLAINTEXT"
     },
     {
+      "depends_on": "eval:doc.security_protocol && doc.security_protocol.includes('SASL')",
       "fieldname": "sasl_mechanism",
       "fieldtype": "Select",
       "label": "SASL Mechanism",
-      "options": "\nPLAIN\nSCRAM-SHA-256\nSCRAM-SHA-512",
-      "depends_on": "eval:doc.security_protocol && doc.security_protocol.includes('SASL')"
+      "options": "\nPLAIN\nSCRAM-SHA-256\nSCRAM-SHA-512"
     },
     {
       "fieldname": "sasl_column",
       "fieldtype": "Column Break"
     },
     {
+      "depends_on": "eval:doc.security_protocol && doc.security_protocol.includes('SASL')",
       "fieldname": "sasl_username",
       "fieldtype": "Data",
-      "label": "SASL Username",
-      "depends_on": "eval:doc.security_protocol && doc.security_protocol.includes('SASL')"
+      "label": "SASL Username"
     },
     {
+      "depends_on": "eval:doc.security_protocol && doc.security_protocol.includes('SASL')",
       "fieldname": "sasl_password",
       "fieldtype": "Password",
-      "label": "SASL Password",
-      "depends_on": "eval:doc.security_protocol && doc.security_protocol.includes('SASL')"
+      "label": "SASL Password"
     },
     {
+      "collapsible": 1,
+      "depends_on": "eval:doc.security_protocol && doc.security_protocol.includes('SSL')",
       "fieldname": "ssl_section",
       "fieldtype": "Section Break",
-      "label": "SSL/TLS",
-      "collapsible": 1,
-      "depends_on": "eval:doc.security_protocol && doc.security_protocol.includes('SSL')"
+      "label": "SSL/TLS"
     },
     {
+      "description": "File path to CA certificate",
       "fieldname": "ssl_ca_location",
       "fieldtype": "Data",
-      "label": "SSL CA Location",
-      "description": "File path to CA certificate"
+      "label": "SSL CA Location"
     },
     {
+      "description": "For mTLS client certificate",
       "fieldname": "ssl_certificate_location",
       "fieldtype": "Data",
-      "label": "SSL Certificate Location",
-      "description": "For mTLS client certificate"
+      "label": "SSL Certificate Location"
     },
     {
+      "description": "For mTLS client key",
       "fieldname": "ssl_key_location",
       "fieldtype": "Data",
-      "label": "SSL Key Location",
-      "description": "For mTLS client key"
+      "label": "SSL Key Location"
     },
     {
+      "collapsible": 1,
       "fieldname": "schema_registry_auth_section",
       "fieldtype": "Section Break",
-      "label": "Schema Registry Authentication",
-      "collapsible": 1
+      "label": "Schema Registry Authentication"
     },
     {
+      "description": "For basic auth to Schema Registry",
       "fieldname": "schema_registry_username",
       "fieldtype": "Data",
-      "label": "Schema Registry Username",
-      "description": "For basic auth to Schema Registry"
+      "label": "Schema Registry Username"
     },
     {
       "fieldname": "schema_registry_password",
@@ -188,47 +180,47 @@
       "label": "Producer"
     },
     {
+      "default": "external-fineract-commands",
       "fieldname": "command_topic",
       "fieldtype": "Data",
       "label": "Command Topic",
-      "default": "external-fineract-commands",
       "reqd": 1
     },
     {
+      "default": "all",
       "fieldname": "producer_acks",
       "fieldtype": "Select",
       "label": "Producer Acks",
-      "options": "0\n1\nall",
-      "default": "all"
+      "options": "0\n1\nall"
     },
     {
+      "default": "3",
       "fieldname": "producer_retries",
       "fieldtype": "Int",
-      "label": "Producer Retries",
-      "default": "3"
+      "label": "Producer Retries"
     },
     {
       "fieldname": "producer_column",
       "fieldtype": "Column Break"
     },
     {
+      "default": "5",
       "fieldname": "producer_linger_ms",
       "fieldtype": "Int",
-      "label": "Linger (ms)",
-      "default": "5"
+      "label": "Linger (ms)"
     },
     {
+      "default": "1",
       "fieldname": "enable_idempotence",
       "fieldtype": "Check",
-      "label": "Enable Idempotence",
-      "default": "1"
+      "label": "Enable Idempotence"
     },
     {
+      "default": "1",
+      "description": "Enable in dev, disable in prod for read-only schema access",
       "fieldname": "auto_register_schemas",
       "fieldtype": "Check",
-      "label": "Auto Register Schemas",
-      "default": "1",
-      "description": "Enable in dev, disable in prod for read-only schema access"
+      "label": "Auto Register Schemas"
     },
     {
       "fieldname": "tenant_section",
@@ -236,17 +228,17 @@
       "label": "Tenant"
     },
     {
+      "default": "default",
       "fieldname": "default_tenant_id",
       "fieldtype": "Data",
-      "label": "Default Tenant ID",
-      "default": "default"
+      "label": "Default Tenant ID"
     },
     {
+      "default": "openerp-fineract",
+      "description": "Identifies this producer in MessageV1 envelope 'source' field",
       "fieldname": "producer_source_name",
       "fieldtype": "Data",
-      "label": "Producer Source Name",
-      "default": "openerp-fineract",
-      "description": "Identifies this producer in MessageV1 envelope 'source' field"
+      "label": "Producer Source Name"
     },
     {
       "fieldname": "consumer_tab",
@@ -254,52 +246,52 @@
       "label": "Consumer"
     },
     {
+      "default": "external-events",
       "fieldname": "events_topic",
       "fieldtype": "Data",
       "label": "Events Topic",
-      "default": "external-events",
       "reqd": 1
     },
     {
+      "default": "external-fineract-commands-dlq",
       "fieldname": "dlq_topic",
       "fieldtype": "Data",
-      "label": "DLQ Topic",
-      "default": "external-fineract-commands-dlq"
+      "label": "DLQ Topic"
     },
     {
+      "default": "openerp-fineract-consumer",
       "fieldname": "consumer_group_id",
       "fieldtype": "Data",
-      "label": "Consumer Group ID",
-      "default": "openerp-fineract-consumer"
+      "label": "Consumer Group ID"
     },
     {
       "fieldname": "consumer_column",
       "fieldtype": "Column Break"
     },
     {
+      "default": "earliest",
       "fieldname": "consumer_auto_offset_reset",
       "fieldtype": "Select",
       "label": "Auto Offset Reset",
-      "options": "earliest\nlatest",
-      "default": "earliest"
+      "options": "earliest\nlatest"
     },
     {
+      "default": "100",
       "fieldname": "consumer_max_poll_records",
       "fieldtype": "Int",
-      "label": "Max Poll Records",
-      "default": "100"
+      "label": "Max Poll Records"
     },
     {
+      "default": "1000",
       "fieldname": "consumer_poll_timeout_ms",
       "fieldtype": "Int",
-      "label": "Poll Timeout (ms)",
-      "default": "1000"
+      "label": "Poll Timeout (ms)"
     },
     {
+      "default": "30000",
       "fieldname": "consumer_session_timeout_ms",
       "fieldtype": "Int",
-      "label": "Session Timeout (ms)",
-      "default": "30000"
+      "label": "Session Timeout (ms)"
     },
     {
       "fieldname": "consumer_flags_section",
@@ -307,16 +299,16 @@
       "label": "Consumer Flags"
     },
     {
+      "default": "0",
       "fieldname": "consumer_enabled",
       "fieldtype": "Check",
-      "label": "Consumer Enabled",
-      "default": "0"
+      "label": "Consumer Enabled"
     },
     {
+      "default": "0",
       "fieldname": "dlq_consumer_enabled",
       "fieldtype": "Check",
-      "label": "DLQ Consumer Enabled",
-      "default": "0"
+      "label": "DLQ Consumer Enabled"
     },
     {
       "fieldname": "advanced_tab",
@@ -324,16 +316,16 @@
       "label": "Advanced"
     },
     {
+      "default": "3600",
       "fieldname": "schema_cache_ttl_seconds",
       "fieldtype": "Int",
-      "label": "Schema Cache TTL (seconds)",
-      "default": "3600"
+      "label": "Schema Cache TTL (seconds)"
     },
     {
+      "default": "72",
       "fieldname": "idempotency_window_hours",
       "fieldtype": "Int",
-      "label": "Idempotency Window (hours)",
-      "default": "72"
+      "label": "Idempotency Window (hours)"
     },
     {
       "fieldname": "retry_section",
@@ -341,16 +333,16 @@
       "label": "Retry"
     },
     {
+      "default": "5",
       "fieldname": "max_produce_retries",
       "fieldtype": "Int",
-      "label": "Max Produce Retries",
-      "default": "5"
+      "label": "Max Produce Retries"
     },
     {
+      "default": "10",
       "fieldname": "produce_retry_delay_seconds",
       "fieldtype": "Int",
-      "label": "Produce Retry Delay (seconds)",
-      "default": "10"
+      "label": "Produce Retry Delay (seconds)"
     },
     {
       "fieldname": "log_section",
@@ -358,26 +350,34 @@
       "label": "Logging"
     },
     {
+      "default": "30",
       "fieldname": "log_retention_days",
       "fieldtype": "Int",
-      "label": "Log Retention (days)",
-      "default": "30"
+      "label": "Log Retention (days)"
     },
     {
+      "default": "0",
+      "description": "Store full payload JSON even for successful messages (increases storage)",
       "fieldname": "log_payload_on_success",
       "fieldtype": "Check",
-      "label": "Log Payload on Success",
-      "default": "0",
-      "description": "Store full payload JSON even for successful messages (increases storage)"
+      "label": "Log Payload on Success"
     }
   ],
+  "issingle": 1,
+  "is_submittable": 0,
+  "istable": 0,
+  "module": "Connect",
+  "name": "Fineract Kafka Settings",
   "permissions": [
     {
-      "role": "System Manager",
-      "read": 1,
-      "write": 1,
       "create": 1,
-      "delete": 1
+      "delete": 1,
+      "read": 1,
+      "role": "System Manager",
+      "write": 1
     }
-  ]
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "track_changes": 1
 }
