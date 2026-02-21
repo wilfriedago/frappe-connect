@@ -281,7 +281,7 @@ def _dispatch_method_call(action, payload: dict, envelope: dict):
 def _dispatch_document_action(action, payload: dict, envelope: dict):
     """Enqueue a document create/update action."""
     frappe.enqueue(
-        "connect.background_jobs.process_business_event.process_document_action",
+        "connect.jobs.process_business_event.process_document_action",
         queue=action.queue or "default",
         timeout=300,
         action_type=action.action_type,

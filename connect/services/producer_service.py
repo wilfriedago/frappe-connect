@@ -90,11 +90,12 @@ def on_document_event(doc, method: str):
             )
 
             frappe.enqueue(
-                "connect.background_jobs.produce_message.produce_command",
+                "connect.jobs.produce_message.produce_command",
                 queue="default",
                 timeout=120,
                 enqueue_after_commit=True,
                 deduplicate=True,
+                job_id=idempotency_key,
                 doctype=doc.doctype,
                 docname=doc.name,
                 rule_name=rule.rule_name,

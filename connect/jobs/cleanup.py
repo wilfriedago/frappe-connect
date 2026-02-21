@@ -49,7 +49,7 @@ def cleanup_kafka_logs():
                 # Re-enqueue the produce job
                 try:
                     frappe.enqueue(
-                        "connect.background_jobs.produce_message.produce_command",
+                        "connect.jobs.produce_message.produce_command",
                         queue="default",
                         timeout=120,
                         doctype=log_entry.source_doctype,
