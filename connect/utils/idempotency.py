@@ -41,7 +41,7 @@ def check_idempotency(idempotency_key: str) -> bool:
     Returns True if the key already exists (duplicate), False if new.
     """
     exists = frappe.db.exists(
-        "Fineract Kafka Log",
+        "Connect Message Log",
         {
             "idempotency_key": idempotency_key,
             "status": ("in", ["Delivered", "Processed", "Skipped"]),

@@ -180,7 +180,7 @@
       "label": "Producer"
     },
     {
-      "default": "external-fineract-commands",
+      "default": "connect-commands",
       "fieldname": "command_topic",
       "fieldtype": "Data",
       "label": "Command Topic",
@@ -234,7 +234,7 @@
       "label": "Default Tenant ID"
     },
     {
-      "default": "openerp-fineract",
+      "default": "openerp-connect",
       "description": "Identifies this producer in MessageV1 envelope 'source' field",
       "fieldname": "producer_source_name",
       "fieldtype": "Data",
@@ -253,13 +253,13 @@
       "reqd": 1
     },
     {
-      "default": "external-fineract-commands-dlq",
+      "default": "connect-commands-dlq",
       "fieldname": "dlq_topic",
       "fieldtype": "Data",
       "label": "DLQ Topic"
     },
     {
-      "default": "openerp-fineract-consumer",
+      "default": "openerp-connect-consumer",
       "fieldname": "consumer_group_id",
       "fieldtype": "Data",
       "label": "Consumer Group ID"
@@ -367,7 +367,7 @@
   "is_submittable": 0,
   "istable": 0,
   "module": "Connect",
-  "name": "Fineract Kafka Settings",
+  "name": "Connect Settings",
   "permissions": [
     {
       "create": 1,

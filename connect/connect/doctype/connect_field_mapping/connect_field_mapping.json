@@ -1,6 +1,6 @@
 {
   "doctype": "DocType",
-  "name": "Fineract Field Mapping",
+  "name": "Connect Field Mapping",
   "module": "Connect",
   "custom": 0,
   "istable": 1,

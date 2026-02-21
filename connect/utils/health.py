@@ -52,11 +52,11 @@ def check_full_health() -> dict:
     Returns dict with overall status and individual component results.
     """
     try:
-        settings = frappe.get_single("Fineract Kafka Settings")
+        settings = frappe.get_single("Connect Settings")
     except Exception as e:
         return {
             "status": "error",
-            "detail": f"Cannot load Fineract Kafka Settings: {e}",
+            "detail": f"Cannot load Connect Settings: {e}",
             "kafka": {"status": "unknown"},
             "schema_registry": {"status": "unknown"},
         }

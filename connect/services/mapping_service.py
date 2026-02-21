@@ -1,6 +1,6 @@
 """Field mapping resolution engine.
 
-Resolves field mappings from Fineract Event Emission Rule child table rows
+Resolves field mappings from Connect Emission Rule child table rows
 into a payload dict suitable for Avro serialization.
 """
 import frappe
@@ -14,7 +14,7 @@ def build_payload(doc, field_mappings: list) -> dict:
 
     Args:
         doc: Frappe document object.
-        field_mappings: List of Fineract Field Mapping child table rows.
+        field_mappings: List of Connect Field Mapping child table rows.
 
     Returns:
         Dict with resolved values keyed by avro_field.

@@ -1,6 +1,6 @@
 {
   "doctype": "DocType",
-  "name": "Fineract Event Handler Action",
+  "name": "Connect Event Handler Action",
   "module": "Connect",
   "custom": 0,
   "istable": 1,

@@ -1,6 +1,6 @@
 {
   "doctype": "DocType",
-  "name": "Fineract Avro Schema",
+  "name": "Connect Avro Schema",
   "module": "Connect",
   "custom": 0,
   "istable": 0,

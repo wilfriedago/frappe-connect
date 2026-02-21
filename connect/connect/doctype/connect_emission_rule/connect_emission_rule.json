@@ -1,6 +1,6 @@
 {
   "doctype": "DocType",
-  "name": "Fineract Event Emission Rule",
+  "name": "Connect Emission Rule",
   "module": "Connect",
   "custom": 0,
   "istable": 0,
@@ -40,7 +40,7 @@
       "unique": 1,
       "in_list_view": 1,
       "in_standard_filter": 1,
-      "description": "Unique identifier, e.g. 'Customer Create → Fineract Client'"
+      "description": "Unique identifier, e.g. 'Customer Create → Client Sync'"
     },
     {
       "fieldname": "enabled",
@@ -83,7 +83,7 @@
     {
       "fieldname": "command_section",
       "fieldtype": "Section Break",
-      "label": "Fineract Command"
+      "label": "Target Command"
     },
     {
       "fieldname": "command_type",
@@ -139,7 +139,7 @@
       "fieldname": "field_mappings",
       "fieldtype": "Table",
       "label": "Field Mappings",
-      "options": "Fineract Field Mapping",
+      "options": "Connect Field Mapping",
       "reqd": 1
     },
     {

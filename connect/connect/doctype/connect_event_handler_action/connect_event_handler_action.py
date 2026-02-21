@@ -1,5 +1,5 @@
 from frappe.model.document import Document
 
 
-class FineractFieldMapping(Document):
+class ConnectEventHandlerAction(Document):
     pass

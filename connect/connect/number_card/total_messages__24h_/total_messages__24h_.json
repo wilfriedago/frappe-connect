@@ -1,0 +1,21 @@
+{
+  "creation": "2024-01-01 00:00:00.000000",
+  "docstatus": 0,
+  "doctype": "Number Card",
+  "document_type": "Connect Message Log",
+  "dynamic_filters_json": "{}",
+  "filters_json": "[]",
+  "function": "Count",
+  "idx": 0,
+  "is_public": 1,
+  "is_standard": 1,
+  "label": "Total Messages (24h)",
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Connect",
+  "name": "Total Messages (24h)",
+  "owner": "Administrator",
+  "show_percentage_stats": 1,
+  "stats_time_interval": "Daily",
+  "type": "Document Type"
+}

@@ -3,7 +3,7 @@ from frappe.model.document import Document
 from frappe.utils import now_datetime
 
 
-class FineractKafkaLog(Document):
+class ConnectMessageLog(Document):
     """Audit log for every produced/consumed Kafka message.
 
     Serves as both observability artifact and idempotency store.
@@ -23,11 +23,11 @@ class FineractKafkaLog(Document):
         source_docname: str = None,
         rule_name: str = None,
         payload_json: str = None,
-    ) -> "FineractKafkaLog":
+    ) -> "ConnectMessageLog":
         """Create a log entry for a produced message."""
         log = frappe.get_doc(
             {
-                "doctype": "Fineract Kafka Log",
+                "doctype": "Connect Message Log",
                 "direction": "Produced",
                 "status": "Pending",
                 "idempotency_key": idempotency_key,
@@ -53,11 +53,11 @@ class FineractKafkaLog(Document):
         tenant_id: str = None,
         handler_name: str = None,
         payload_json: str = None,
-    ) -> "FineractKafkaLog":
+    ) -> "ConnectMessageLog":
         """Create a log entry for a consumed message."""
         log = frappe.get_doc(
             {
-                "doctype": "Fineract Kafka Log",
+                "doctype": "Connect Message Log",
                 "direction": "Consumed",
                 "status": "Pending",
                 "idempotency_key": idempotency_key,

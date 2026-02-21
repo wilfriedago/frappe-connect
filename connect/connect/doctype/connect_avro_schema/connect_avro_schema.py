@@ -4,7 +4,7 @@ import frappe
 from frappe.model.document import Document
 
 
-class FineractAvroSchema(Document):
+class ConnectAvroSchema(Document):
     """Local cache of Avro schemas from the Schema Registry (MariaDB layer)."""
 
     def validate(self):
@@ -24,7 +24,7 @@ class FineractAvroSchema(Document):
             # Unmark other versions of the same schema as non-latest
             frappe.db.sql(
                 """
-                UPDATE `tabFineract Avro Schema`
+                UPDATE `tabConnect Avro Schema`
                 SET is_latest = 0
                 WHERE schema_name = %s AND name != %s
                 """,

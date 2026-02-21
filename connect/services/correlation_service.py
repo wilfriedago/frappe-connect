@@ -8,12 +8,12 @@ def correlate_messages(produced_log_name: str, consumed_log_name: str):
     """Link a produced Kafka log entry to a consumed one (bidirectional)."""
     try:
         frappe.db.set_value(
-            "Fineract Kafka Log", produced_log_name,
+            "Connect Message Log", produced_log_name,
             "correlated_log", consumed_log_name,
             update_modified=False,
         )
         frappe.db.set_value(
-            "Fineract Kafka Log", consumed_log_name,
+            "Connect Message Log", consumed_log_name,
             "correlated_log", produced_log_name,
             update_modified=False,
         )
@@ -25,7 +25,7 @@ def correlate_messages(produced_log_name: str, consumed_log_name: str):
 def find_produced_log(idempotency_key: str) -> str | None:
     """Find a produced log entry by idempotency key."""
     result = frappe.db.get_value(
-        "Fineract Kafka Log",
+        "Connect Message Log",
         {"idempotency_key": idempotency_key, "direction": "Produced"},
         "name",
     )
@@ -35,7 +35,7 @@ def find_produced_log(idempotency_key: str) -> str | None:
 def find_consumed_log(idempotency_key: str) -> str | None:
     """Find a consumed log entry by idempotency key."""
     result = frappe.db.get_value(
-        "Fineract Kafka Log",
+        "Connect Message Log",
         {"idempotency_key": idempotency_key, "direction": "Consumed"},
         "name",
     )
@@ -50,7 +50,7 @@ def auto_correlate_by_external_id(external_id: str):
     try:
         produced = frappe.db.sql(
             """
-            SELECT name FROM `tabFineract Kafka Log`
+            SELECT name FROM `tabConnect Message Log`
             WHERE direction = 'Produced'
             AND payload_json LIKE %s
             ORDER BY creation DESC LIMIT 1
@@ -60,7 +60,7 @@ def auto_correlate_by_external_id(external_id: str):
         )
         consumed = frappe.db.sql(
             """
-            SELECT name FROM `tabFineract Kafka Log`
+            SELECT name FROM `tabConnect Message Log`
             WHERE direction = 'Consumed'
             AND payload_json LIKE %s
             ORDER BY creation DESC LIMIT 1

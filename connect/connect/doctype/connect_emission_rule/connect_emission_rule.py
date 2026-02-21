@@ -2,8 +2,8 @@ import frappe
 from frappe.model.document import Document
 
 
-class FineractEventEmissionRule(Document):
-    """Defines when a Frappe DocType event should produce a Fineract command."""
+class ConnectEmissionRule(Document):
+    """Defines when a Frappe DocType event should produce a command message."""
 
     def validate(self):
         self._validate_condition()
@@ -27,4 +27,4 @@ class FineractEventEmissionRule(Document):
         self._invalidate_active_doctypes_cache()
 
     def _invalidate_active_doctypes_cache(self):
-        frappe.cache().delete_value("fineract_active_doctypes")
+        frappe.cache().delete_value("connect_active_doctypes")

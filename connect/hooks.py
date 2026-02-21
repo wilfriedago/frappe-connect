@@ -1,7 +1,7 @@
 app_name = "connect"
 app_title = "Connect"
 app_publisher = "BFT Group"
-app_description = "Kafka-Fineract Integration Bridge for Frappe/ERPNext"
+app_description = "Kafka Integration Bridge for Frappe/ERPNext"
 app_icon = "octicon octicon-plug"
 app_color = "#2E86C1"
 app_email = "dev@bftgroup.com"
@@ -27,7 +27,7 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/connect/css/connect.css"
+app_include_css = "/assets/connect/css/connect.css"
 # app_include_js = "/assets/connect/js/connect.js"
 
 # include js, css files in header of web template
@@ -45,8 +45,14 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_js = {
+    "Connect Settings": "public/js/connect_settings.js",
+    "Connect Emission Rule": "public/js/connect_emission_rule.js",
+    "Connect Message Log": "public/js/connect_message_log.js",
+}
+doctype_list_js = {
+    "Connect Message Log": "public/js/connect_message_log_list.js",
+}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -148,22 +154,22 @@ doc_events = {
 # ---------------
 
 scheduler_events = {
-	# "all": [
-	# 	"connect.tasks.all"
-	# ],
+    # "all": [
+    # 	"connect.tasks.all"
+    # ],
     # Cleanup old Kafka logs daily at midnight
     "daily": [
         "connect.jobs.cleanup.cleanup_kafka_logs",
     ],
-	# "hourly": [
-	# 	"connect.tasks.hourly"
-	# ],
-	# "weekly": [
-	# 	"connect.tasks.weekly"
-	# ],
-	# "monthly": [
-	# 	"connect.tasks.monthly"
-	# ],
+    # "hourly": [
+    # 	"connect.tasks.hourly"
+    # ],
+    # "weekly": [
+    # 	"connect.tasks.weekly"
+    # ],
+    # "monthly": [
+    # 	"connect.tasks.monthly"
+    # ],
     # Refresh schema cache every 6 hours
     "cron": {
         "0 */6 * * *": [

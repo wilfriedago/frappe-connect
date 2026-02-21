@@ -28,7 +28,7 @@ from connect.utils.logging import log_error, log_info
 
 
 def start_consumer(site: str, max_messages: int = 0):
-    """Start the Fineract Kafka consumer loop.
+    """Start the Connect Kafka consumer loop.
 
     Called from the bench command. Runs until SIGTERM/SIGINT.
     """
@@ -38,9 +38,9 @@ def start_consumer(site: str, max_messages: int = 0):
     frappe.connect()
 
     try:
-        settings = frappe.get_single("Fineract Kafka Settings")
+        settings = frappe.get_single("Connect Settings")
         if not settings.consumer_enabled:
-            print("Consumer is disabled in Fineract Kafka Settings")
+            print("Consumer is disabled in Connect Settings")
             return
 
         # Build topic list
@@ -103,11 +103,11 @@ def _process_message(msg, avro_deserializer, settings):
         dataschema = envelope.get("dataschema", "")
 
         # Create Kafka Log
-        from connect.connect.doctype.fineract_kafka_log.fineract_kafka_log import (
-            FineractKafkaLog,
+        from connect.connect.doctype.connect_message_log.connect_message_log import (
+            ConnectMessageLog,
         )
 
-        log = FineractKafkaLog.log_consumed(
+        log = ConnectMessageLog.log_consumed(
             idempotency_key=envelope_idem_key,
             event_type=event_type,
             topic=topic,
@@ -186,12 +186,12 @@ def _process_message(msg, avro_deserializer, settings):
         )
         # Try to log the error
         try:
-            from connect.connect.doctype.fineract_kafka_log.fineract_kafka_log import (
-                FineractKafkaLog,
+            from connect.connect.doctype.connect_message_log.connect_message_log import (
+                ConnectMessageLog,
             )
 
             idem_key = generate_consumer_idempotency_key(topic, partition, offset)
-            error_log = FineractKafkaLog.log_consumed(
+            error_log = ConnectMessageLog.log_consumed(
                 idempotency_key=idem_key,
                 event_type="UNKNOWN",
                 topic=topic,
@@ -207,7 +207,7 @@ def _process_message(msg, avro_deserializer, settings):
 def _find_handler(event_type: str):
     """Find an enabled event handler matching the business event type."""
     handlers = frappe.get_all(
-        "Fineract Event Handler",
+        "Connect Event Handler",
         filters={
             "enabled": 1,
             "business_event_type": event_type,
@@ -215,7 +215,7 @@ def _find_handler(event_type: str):
         fields=["name"],
     )
     if handlers:
-        return frappe.get_doc("Fineract Event Handler", handlers[0].name)
+        return frappe.get_doc("Connect Event Handler", handlers[0].name)
     return None
 
 

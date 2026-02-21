@@ -1,6 +1,6 @@
 {
   "doctype": "DocType",
-  "name": "Fineract Kafka Log",
+  "name": "Connect Message Log",
   "module": "Connect",
   "custom": 0,
   "istable": 0,
@@ -150,19 +150,19 @@
       "fieldname": "rule_name",
       "fieldtype": "Link",
       "label": "Emission Rule",
-      "options": "Fineract Event Emission Rule"
+      "options": "Connect Emission Rule"
     },
     {
       "fieldname": "handler_name",
       "fieldtype": "Link",
       "label": "Event Handler",
-      "options": "Fineract Event Handler"
+      "options": "Connect Event Handler"
     },
     {
       "fieldname": "correlated_log",
       "fieldtype": "Link",
       "label": "Correlated Log",
-      "options": "Fineract Kafka Log",
+      "options": "Connect Message Log",
       "description": "Links Produced ↔ Consumed messages"
     },
     {

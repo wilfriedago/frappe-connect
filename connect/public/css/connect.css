@@ -1,0 +1,99 @@
+/*
+ * Connect — Custom Styles
+ *
+ * Status badges, dashboard overrides, and Connect workspace styling.
+ */
+
+/* ──────────────────────────────────────────────
+   Status badges in Message Log list/form
+   ────────────────────────────────────────────── */
+.connect-status-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 4px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+}
+
+.connect-status-badge--pending {
+	background-color: #fff3cd;
+	color: #856404;
+}
+
+.connect-status-badge--delivered,
+.connect-status-badge--sent {
+	background-color: #d1ecf1;
+	color: #0c5460;
+}
+
+.connect-status-badge--processed {
+	background-color: #d4edda;
+	color: #155724;
+}
+
+.connect-status-badge--failed {
+	background-color: #f8d7da;
+	color: #721c24;
+}
+
+.connect-status-badge--skipped {
+	background-color: #e2e3e5;
+	color: #383d41;
+}
+
+.connect-status-badge--dead-letter {
+	background-color: #d6d8db;
+	color: #1b1e21;
+}
+
+/* ──────────────────────────────────────────────
+   Health check result dialog
+   ────────────────────────────────────────────── */
+.connect-health-result {
+	margin: 8px 0;
+}
+
+.connect-health-result > div:last-child {
+	border-bottom: none !important;
+}
+
+/* ──────────────────────────────────────────────
+   Connection status banner in Settings
+   ────────────────────────────────────────────── */
+.connect-status-banner .alert {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* ──────────────────────────────────────────────
+   Workspace card tweaks
+   ────────────────────────────────────────────── */
+.workspace-container
+	[data-page-name="Connect"]
+	.number-card-container
+	.number-card {
+	border-left: 3px solid var(--primary);
+}
+
+/* ──────────────────────────────────────────────
+   Direction arrows in Message Log list
+   ────────────────────────────────────────────── */
+.list-row .connect-direction-produced {
+	color: #2e86c1;
+	font-weight: 600;
+}
+
+.list-row .connect-direction-consumed {
+	color: #28b463;
+	font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────
+   Emission Rule — manual push dialog
+   ────────────────────────────────────────────── */
+.connect-manual-push .modal-dialog {
+	max-width: 480px;
+}

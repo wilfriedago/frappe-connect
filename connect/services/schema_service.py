@@ -2,7 +2,7 @@
 
 Cache layers:
 1. Redis (fastest, TTL-based)
-2. MariaDB (Fineract Avro Schema DocType, persistent)
+2. MariaDB (Connect Avro Schema DocType, persistent)
 3. Schema Registry (authoritative, network call)
 """
 import json
@@ -14,7 +14,7 @@ from connect.utils.cache import cache_delete, cache_get, cache_set
 from connect.utils.logging import log_error, log_info
 
 
-SCHEMA_CACHE_PREFIX = "fineract_schema:"
+SCHEMA_CACHE_PREFIX = "connect_schema:"
 
 
 def get_schema(schema_name: str, settings=None) -> dict:
@@ -23,7 +23,7 @@ def get_schema(schema_name: str, settings=None) -> dict:
     Returns the parsed schema dict.
     """
     if settings is None:
-        settings = frappe.get_single("Fineract Kafka Settings")
+        settings = frappe.get_single("Connect Settings")
 
     ttl = settings.schema_cache_ttl_seconds or 3600
 
@@ -35,7 +35,7 @@ def get_schema(schema_name: str, settings=None) -> dict:
 
     # Layer 2: MariaDB
     schema_doc = frappe.db.get_value(
-        "Fineract Avro Schema",
+        "Connect Avro Schema",
         {"schema_name": schema_name, "is_latest": 1},
         ["schema_json", "schema_id"],
         as_dict=True,
@@ -74,7 +74,7 @@ def _fetch_from_registry(schema_name: str, settings) -> dict | None:
 
 
 def _save_schema_to_db(schema_name: str, schema_dict: dict, settings):
-    """Save a fetched schema to the MariaDB cache (Fineract Avro Schema DocType)."""
+    """Save a fetched schema to the MariaDB cache (Connect Avro Schema DocType)."""
     try:
         schema_json = json.dumps(schema_dict, indent=2)
 
@@ -87,7 +87,7 @@ def _save_schema_to_db(schema_name: str, schema_dict: dict, settings):
 
         doc = frappe.get_doc(
             {
-                "doctype": "Fineract Avro Schema",
+                "doctype": "Connect Avro Schema",
                 "schema_name": schema_name,
                 "schema_version": 1,
                 "schema_type": schema_type,
@@ -109,7 +109,7 @@ def invalidate_schema_cache(schema_name: str | None = None):
         cache_delete(f"{SCHEMA_CACHE_PREFIX}{schema_name}")
     else:
         # Clear all schema cache entries
-        schemas = frappe.get_all("Fineract Avro Schema", pluck="schema_name")
+        schemas = frappe.get_all("Connect Avro Schema", pluck="schema_name")
         for name in schemas:
             cache_delete(f"{SCHEMA_CACHE_PREFIX}{name}")
 
@@ -119,12 +119,12 @@ def refresh_schema_cache():
 
     Runs every 6 hours to pre-warm the cache.
     """
-    settings = frappe.get_single("Fineract Kafka Settings")
+    settings = frappe.get_single("Connect Settings")
     if not settings.enabled:
         return
 
     schemas = frappe.get_all(
-        "Fineract Avro Schema",
+        "Connect Avro Schema",
         filters={"is_latest": 1},
         fields=["schema_name"],
     )
