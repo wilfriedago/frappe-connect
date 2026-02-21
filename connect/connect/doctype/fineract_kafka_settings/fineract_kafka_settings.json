@@ -1,7 +1,7 @@
 {
   "doctype": "DocType",
   "name": "Fineract Kafka Settings",
-  "module": "Fineract Kafka",
+  "module": "Connect",
   "custom": 0,
   "is_single": 1,
   "istable": 0,
