@@ -1,6 +1,6 @@
 {
   "doctype": "DocType",
-  "name": "Connect Field Mapping",
+  "name": "Connect Hook Field Mapping",
   "module": "Connect",
   "custom": 0,
   "istable": 1,

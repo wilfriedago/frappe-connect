@@ -38,13 +38,13 @@
     },
     {
       "fieldname": "sync_job_type",
-      "fieldtype": "Link",
+      "fieldtype": "Data",
       "label": "Sync Job Type",
-      "options": "Sync Job Type",
       "depends_on": "eval:doc.action_type=='Sync Job'",
       "mandatory_depends_on": "eval:doc.action_type=='Sync Job'",
       "in_list_view": 1,
-      "columns": 2
+      "columns": 2,
+      "description": "Name of the Sync Job Type (requires Frappe Tweaks app)"
     },
     {
       "fieldname": "method_path",

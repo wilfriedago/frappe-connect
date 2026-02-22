@@ -149,8 +149,8 @@
     {
       "fieldname": "rule_name",
       "fieldtype": "Link",
-      "label": "Emission Rule",
-      "options": "Connect Emission Rule"
+      "label": "Hook",
+      "options": "Connect Hook"
     },
     {
       "fieldname": "handler_name",

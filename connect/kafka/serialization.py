@@ -66,11 +66,11 @@ def create_avro_serializer(sr_client, auto_register: bool = True):
 	"""Create a Confluent AvroSerializer for the MessageV1 envelope.
 
 	Args:
-	    sr_client: Confluent SchemaRegistryClient instance.
-	    auto_register: Whether to auto-register schemas.
+		sr_client: Confluent SchemaRegistryClient instance.
+		auto_register: Whether to auto-register schemas.
 
 	Returns:
-	    AvroSerializer configured for MessageV1.
+		AvroSerializer configured for MessageV1.
 	"""
 	from confluent_kafka.schema_registry import record_subject_name_strategy
 	from confluent_kafka.schema_registry.avro import AvroSerializer
@@ -89,12 +89,12 @@ def serialize_envelope(avro_serializer, envelope: dict, topic: str) -> bytes:
 	"""Serialize a MessageV1 envelope using the Confluent wire format.
 
 	Args:
-	    avro_serializer: AvroSerializer for MessageV1.
-	    envelope: MessageV1 dict with all required fields.
-	    topic: Kafka topic for serialization context.
+		avro_serializer: AvroSerializer for MessageV1.
+		envelope: MessageV1 dict with all required fields.
+		topic: Kafka topic for serialization context.
 
 	Returns:
-	    Confluent wire format bytes [0x00][schema-id][avro-binary].
+		Confluent wire format bytes [0x00][schema-id][avro-binary].
 	"""
 	from confluent_kafka.serialization import MessageField, SerializationContext
 
@@ -106,10 +106,10 @@ def create_avro_deserializer(sr_client):
 	"""Create a Confluent AvroDeserializer for the MessageV1 envelope.
 
 	Args:
-	    sr_client: Confluent SchemaRegistryClient instance.
+		sr_client: Confluent SchemaRegistryClient instance.
 
 	Returns:
-	    AvroDeserializer configured for MessageV1.
+		AvroDeserializer configured for MessageV1.
 	"""
 	from confluent_kafka.schema_registry.avro import AvroDeserializer
 
@@ -120,12 +120,12 @@ def deserialize_envelope(avro_deserializer, data: bytes, topic: str) -> dict:
 	"""Deserialize a Confluent wire format message back to a MessageV1 dict.
 
 	Args:
-	    avro_deserializer: AvroDeserializer for MessageV1.
-	    data: Raw Kafka message value bytes.
-	    topic: Kafka topic for deserialization context.
+		avro_deserializer: AvroDeserializer for MessageV1.
+		data: Raw Kafka message value bytes.
+		topic: Kafka topic for deserialization context.
 
 	Returns:
-	    MessageV1 dict.
+		MessageV1 dict.
 	"""
 	from confluent_kafka.serialization import MessageField, SerializationContext
 

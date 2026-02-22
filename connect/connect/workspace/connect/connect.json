@@ -1,165 +1,133 @@
 {
-  "charts": [
-    {
-      "chart_name": "Messages by Status (24h)",
-      "label": "Messages by Status (24h)"
-    },
-    {
-      "chart_name": "Messages Over Time",
-      "label": "Messages Over Time"
-    },
-    {
-      "chart_name": "Messages by Direction",
-      "label": "Messages by Direction"
-    }
-  ],
-  "content": "[{\"id\":\"connect_nc_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Overview</b></span>\",\"col\":12}},{\"id\":\"connect_nc_total\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Messages (24h)\",\"col\":4}},{\"id\":\"connect_nc_failed\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Failed Messages\",\"col\":4}},{\"id\":\"connect_nc_rules\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Active Emission Rules\",\"col\":4}},{\"id\":\"connect_chart_status\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Messages by Status (24h)\",\"col\":12}},{\"id\":\"connect_spacer1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"connect_sc_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Quick Access</b></span>\",\"col\":12}},{\"id\":\"connect_sc_settings\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Connect Settings\",\"col\":3}},{\"id\":\"connect_sc_rules\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Emission Rules\",\"col\":3}},{\"id\":\"connect_sc_logs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Message Logs\",\"col\":3}},{\"id\":\"connect_sc_handlers\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Event Handlers\",\"col\":3}},{\"id\":\"connect_spacer2\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"connect_chart_time\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Messages Over Time\",\"col\":12}},{\"id\":\"connect_spacer3\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"connect_card_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Configuration</b></span>\",\"col\":12}},{\"id\":\"connect_card_config\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":4}},{\"id\":\"connect_card_rules\",\"type\":\"card\",\"data\":{\"card_name\":\"Rules & Handlers\",\"col\":4}},{\"id\":\"connect_card_monitoring\",\"type\":\"card\",\"data\":{\"card_name\":\"Monitoring\",\"col\":4}}]",
-  "creation": "2024-01-01 00:00:00.000000",
-  "custom_blocks": [],
-  "docstatus": 0,
-  "doctype": "Workspace",
-  "for_user": "",
-  "hide_custom": 0,
-  "icon": "integration",
-  "idx": 0,
-  "is_hidden": 0,
-  "label": "Connect",
-  "links": [
-    {
-      "hidden": 0,
-      "is_query_report": 0,
-      "label": "Configuration",
-      "link_count": 0,
-      "onboard": 0,
-      "type": "Card Break"
-    },
-    {
-      "dependencies": "",
-      "hidden": 0,
-      "is_query_report": 0,
-      "label": "Connect Settings",
-      "link_count": 0,
-      "link_to": "Connect Settings",
-      "link_type": "DocType",
-      "onboard": 1,
-      "type": "Link"
-    },
-    {
-      "dependencies": "",
-      "hidden": 0,
-      "is_query_report": 0,
-      "label": "Connect Avro Schema",
-      "link_count": 0,
-      "link_to": "Connect Avro Schema",
-      "link_type": "DocType",
-      "onboard": 0,
-      "type": "Link"
-    },
-    {
-      "hidden": 0,
-      "is_query_report": 0,
-      "label": "Rules & Handlers",
-      "link_count": 0,
-      "onboard": 0,
-      "type": "Card Break"
-    },
-    {
-      "dependencies": "",
-      "hidden": 0,
-      "is_query_report": 0,
-      "label": "Connect Emission Rule",
-      "link_count": 0,
-      "link_to": "Connect Emission Rule",
-      "link_type": "DocType",
-      "onboard": 1,
-      "type": "Link"
-    },
-    {
-      "dependencies": "",
-      "hidden": 0,
-      "is_query_report": 0,
-      "label": "Connect Event Handler",
-      "link_count": 0,
-      "link_to": "Connect Event Handler",
-      "link_type": "DocType",
-      "onboard": 1,
-      "type": "Link"
-    },
-    {
-      "hidden": 0,
-      "is_query_report": 0,
-      "label": "Monitoring",
-      "link_count": 0,
-      "onboard": 0,
-      "type": "Card Break"
-    },
-    {
-      "dependencies": "",
-      "hidden": 0,
-      "is_query_report": 0,
-      "label": "Connect Message Log",
-      "link_count": 0,
-      "link_to": "Connect Message Log",
-      "link_type": "DocType",
-      "onboard": 1,
-      "type": "Link"
-    }
-  ],
-  "modified": "2024-01-01 00:00:00.000000",
-  "modified_by": "Administrator",
-  "module": "Connect",
-  "name": "Connect",
-  "number_cards": [
-    {
-      "label": "Total Messages (24h)",
-      "number_card_name": "Total Messages (24h)"
-    },
-    {
-      "label": "Failed Messages",
-      "number_card_name": "Failed Messages"
-    },
-    {
-      "label": "Active Emission Rules",
-      "number_card_name": "Active Emission Rules"
-    }
-  ],
-  "owner": "Administrator",
-  "parent_page": "",
-  "public": 1,
-  "quick_lists": [],
-  "restrict_to_domain": "",
-  "roles": [],
-  "sequence_id": 50.0,
-  "shortcuts": [
-    {
-      "color": "Blue",
-      "doc_view": "",
-      "label": "Connect Settings",
-      "link_to": "Connect Settings",
-      "type": "DocType"
-    },
-    {
-      "color": "Green",
-      "doc_view": "List",
-      "label": "Emission Rules",
-      "link_to": "Connect Emission Rule",
-      "stats_filter": "{\"enabled\": 1}",
-      "type": "DocType"
-    },
-    {
-      "color": "Orange",
-      "doc_view": "List",
-      "label": "Message Logs",
-      "link_to": "Connect Message Log",
-      "type": "DocType"
-    },
-    {
-      "color": "Purple",
-      "doc_view": "List",
-      "label": "Event Handlers",
-      "link_to": "Connect Event Handler",
-      "type": "DocType"
-    }
-  ],
-  "title": "Connect"
+ "charts": [
+  {
+   "chart_name": "Messages by Status (24h)",
+   "label": "Messages by Status (24h)"
+  },
+  {
+   "chart_name": "Messages Over Time",
+   "label": "Messages Over Time"
+  }
+ ],
+ "content": "[{\"id\":\"connect_nc_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Overview</b></span>\",\"col\":12}},{\"id\":\"kv5-bXQfIZ\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Active Hooks\",\"col\":4}},{\"id\":\"connect_nc_total\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Messages (24h)\",\"col\":4}},{\"id\":\"connect_nc_failed\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Failed Messages\",\"col\":4}},{\"id\":\"connect_chart_status\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Messages by Status (24h)\",\"col\":12}},{\"id\":\"connect_spacer2\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"buA09RUWMa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Dashboard</b></span>\",\"col\":12}},{\"id\":\"connect_chart_time\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Messages Over Time\",\"col\":12}},{\"id\":\"connect_spacer3\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"connect_card_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Configuration</b></span>\",\"col\":12}},{\"id\":\"connect_card_config\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":4}},{\"id\":\"connect_card_rules\",\"type\":\"card\",\"data\":{\"card_name\":\"Hooks & Handlers\",\"col\":4}},{\"id\":\"connect_card_monitoring\",\"type\":\"card\",\"data\":{\"card_name\":\"Monitoring\",\"col\":4}}]",
+ "creation": "2024-01-01 00:00:00",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "integration",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Connect",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Monitoring",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Connect Message Log",
+   "link_count": 0,
+   "link_to": "Connect Message Log",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Hooks & Handlers",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Connect Hook",
+   "link_count": 0,
+   "link_to": "Connect Hook",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Connect Event Handler",
+   "link_count": 0,
+   "link_to": "Connect Event Handler",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Connect Settings",
+   "link_count": 0,
+   "link_to": "Connect Settings",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Connect Avro Schema",
+   "link_count": 0,
+   "link_to": "Connect Avro Schema",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-22 00:38:10.217105",
+ "modified_by": "Administrator",
+ "module": "Connect",
+ "name": "Connect",
+ "number_cards": [
+  {
+   "label": "Total Messages (24h)",
+   "number_card_name": "Total Messages (24h)"
+  },
+  {
+   "label": "Active Hooks",
+   "number_card_name": "Active Hooks"
+  },
+  {
+   "label": "Failed Messages",
+   "number_card_name": "Failed Messages"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 50.0,
+ "shortcuts": [],
+ "title": "Connect"
 }

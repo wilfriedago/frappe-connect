@@ -23,7 +23,7 @@ frappe.listview_settings["Connect Message Log"] = {
 		direction(value) {
 			const icon = value === "Produced" ? "↑" : "↓";
 			const color = value === "Produced" ? "#2E86C1" : "#28B463";
-			return `<span style="color: ${color}; font-weight: 600;">${icon} ${value}</span>`;
+			return `<span style="color: ${color};font-size: var(--text-sm);font-weight: var(--weight-regular);">${icon} ${value}</span>`;
 		},
 	},
 

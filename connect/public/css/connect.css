@@ -92,7 +92,7 @@
 }
 
 /* ──────────────────────────────────────────────
-   Emission Rule — manual push dialog
+   Connect Hook — manual push dialog
    ────────────────────────────────────────────── */
 .connect-manual-push .modal-dialog {
 	max-width: 480px;

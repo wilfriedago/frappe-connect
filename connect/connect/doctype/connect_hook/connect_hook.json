@@ -1,0 +1,188 @@
+{
+ "actions": [],
+ "autoname": "field:rule_name",
+ "creation": "2026-02-21 20:07:57.665988",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "rule_name",
+  "column_break_sixy",
+  "enabled",
+  "source_section",
+  "source_doctype",
+  "column_break_hloj",
+  "document_event",
+  "section_break_ltip",
+  "condition",
+  "command_section",
+  "command_type",
+  "command_category",
+  "avro_schema_name",
+  "command_column",
+  "topic_override",
+  "tenant_id_override",
+  "priority",
+  "mapping_section",
+  "field_mappings",
+  "notes_section",
+  "description"
+ ],
+ "fields": [
+  {
+   "description": "Unique identifier, e.g. 'Customer Create \u2192 Client Sync'",
+   "fieldname": "rule_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Rule Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "fieldname": "source_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Source DocType",
+   "options": "DocType",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "document_event",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Document Event",
+   "options": "after_insert\non_submit\non_update\non_trash\non_cancel",
+   "reqd": 1
+  },
+  {
+   "description": "Optional Python expression. Evaluated with 'doc' in scope. Must return truthy to proceed.",
+   "fieldname": "condition",
+   "fieldtype": "Code",
+   "label": "Condition",
+   "options": "Python"
+  },
+  {
+   "fieldname": "command_section",
+   "fieldtype": "Section Break",
+   "label": "Target Command"
+  },
+  {
+   "description": "e.g. ExternalCreateClientCommand",
+   "fieldname": "command_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Command Type",
+   "reqd": 1
+  },
+  {
+   "description": "e.g. CLIENT, LOAN",
+   "fieldname": "command_category",
+   "fieldtype": "Data",
+   "label": "Command Category",
+   "reqd": 1
+  },
+  {
+   "fieldname": "command_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Select the Avro schema to use for serializing the command payload",
+   "fieldname": "avro_schema_name",
+   "fieldtype": "Link",
+   "label": "Avro Schema",
+   "options": "Connect Avro Schema",
+   "reqd": 1
+  },
+  {
+   "description": "If blank, uses the default command topic from settings",
+   "fieldname": "topic_override",
+   "fieldtype": "Data",
+   "label": "Topic Override"
+  },
+  {
+   "description": "If blank, uses the default tenant ID from settings",
+   "fieldname": "tenant_id_override",
+   "fieldtype": "Data",
+   "label": "Tenant ID Override"
+  },
+  {
+   "default": "10",
+   "description": "Lower value = higher priority",
+   "fieldname": "priority",
+   "fieldtype": "Int",
+   "label": "Priority"
+  },
+  {
+   "fieldname": "mapping_section",
+   "fieldtype": "Section Break",
+   "label": "Field Mappings"
+  },
+  {
+   "fieldname": "field_mappings",
+   "fieldtype": "Table",
+   "label": "Field Mappings",
+   "options": "Connect Hook Field Mapping",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_sixy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_hloj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ltip",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "links": [],
+ "modified": "2026-02-22 00:44:36.550293",
+ "modified_by": "Administrator",
+ "module": "Connect",
+ "name": "Connect Hook",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "select": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "priority",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

@@ -17,11 +17,11 @@ def process_document_action(
     """Process a Create/Update Document action from a consumed event.
 
     Args:
-            action_type: 'Create Document' or 'Update Document'.
-            target_doctype: The DocType to create/update.
-            field_mapping_json: JSON string mapping payload fields → DocType fields.
-            correlation_field: Payload field used for matching (e.g., 'externalId').
-            payload: The deserialized inner Avro payload dict.
+		action_type: 'Create Document' or 'Update Document'.
+		target_doctype: The DocType to create/update.
+		field_mapping_json: JSON string mapping payload fields → DocType fields.
+		correlation_field: Payload field used for matching (e.g., 'externalId').
+		payload: The deserialized inner Avro payload dict.
     """
     try:
         # Parse field mappings

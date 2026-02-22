@@ -1,11 +1,11 @@
 /**
- * Connect Emission Rule — Form Script
+ * Connect Hook — Form Script
  *
  * Adds:
  * - "Manual Push" button to test-fire a rule with a specific document
  * - Rule validation helpers
  */
-frappe.ui.form.on("Connect Emission Rule", {
+frappe.ui.form.on("Connect Hook", {
 	refresh(frm) {
 		if (!frm.doc.__islocal && frm.doc.enabled) {
 			_add_manual_push_button(frm);

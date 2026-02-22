@@ -7,7 +7,7 @@
   "is_submittable": 0,
   "track_changes": 1,
   "engine": "InnoDB",
-  "autoname": "format:SCHEMA-{schema_name}-v{schema_version}",
+  "autoname": "format:{schema_name}-v{schema_version}",
   "naming_rule": "Expression",
   "sort_field": "modified",
   "sort_order": "DESC",

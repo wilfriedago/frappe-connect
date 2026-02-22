@@ -46,12 +46,12 @@ app_include_css = "/assets/connect/css/connect.css"
 
 # include js in doctype views
 doctype_js = {
-    "Connect Settings": "public/js/connect_settings.js",
-    "Connect Emission Rule": "public/js/connect_emission_rule.js",
-    "Connect Message Log": "public/js/connect_message_log.js",
+	"Connect Settings": "public/js/connect_settings.js",
+	"Connect Hook": "public/js/connect_hook.js",
+	"Connect Message Log": "public/js/connect_message_log.js",
 }
 doctype_list_js = {
-    "Connect Message Log": "public/js/connect_message_log_list.js",
+	"Connect Message Log": "public/js/connect_message_log_list.js",
 }
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -141,41 +141,41 @@ doctype_list_js = {
 # Hook on document methods and events
 
 doc_events = {
-    "*": {
-        "after_insert": "connect.services.producer_service.on_document_event",
-        "on_update": "connect.services.producer_service.on_document_event",
-        "on_submit": "connect.services.producer_service.on_document_event",
-        "on_cancel": "connect.services.producer_service.on_document_event",
-        "on_trash": "connect.services.producer_service.on_document_event",
-    }
+	"*": {
+		"after_insert": "connect.services.producer_service.on_document_event",
+		"on_update": "connect.services.producer_service.on_document_event",
+		"on_submit": "connect.services.producer_service.on_document_event",
+		"on_cancel": "connect.services.producer_service.on_document_event",
+		"on_trash": "connect.services.producer_service.on_document_event",
+	}
 }
 
 # Scheduled Tasks
 # ---------------
 
 scheduler_events = {
-    # "all": [
-    # 	"connect.tasks.all"
-    # ],
-    # Cleanup old Kafka logs daily at midnight
-    "daily": [
-        "connect.jobs.cleanup.cleanup_kafka_logs",
-    ],
-    # "hourly": [
-    # 	"connect.tasks.hourly"
-    # ],
-    # "weekly": [
-    # 	"connect.tasks.weekly"
-    # ],
-    # "monthly": [
-    # 	"connect.tasks.monthly"
-    # ],
-    # Refresh schema cache every 6 hours
-    "cron": {
-        "0 */6 * * *": [
-            "connect.services.schema_service.refresh_schema_cache",
-        ],
-    },
+	# "all": [
+	# 	"connect.tasks.all"
+	# ],
+	# Cleanup old Kafka logs daily at midnight
+	"daily": [
+		"connect.jobs.cleanup.cleanup_kafka_logs",
+	],
+	# "hourly": [
+	# 	"connect.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"connect.tasks.weekly"
+	# ],
+	# "monthly": [
+	# 	"connect.tasks.monthly"
+	# ],
+	# Refresh schema cache every 6 hours
+	"cron": {
+		"0 */6 * * *": [
+			"connect.services.schema_service.refresh_schema_cache",
+		],
+	},
 }
 
 # Testing
