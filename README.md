@@ -28,10 +28,11 @@ bench --site your-site migrate
 ## Setup
 
 1. Start Kafka infrastructure: `docker compose -f docker-compose.kafka.yml up -d`
-2. Configure **Fineract Kafka Settings** in Desk
-3. Create **Fineract Event Emission Rules** for producer
-4. Create **Fineract Event Handlers** for consumer
+2. Configure **Connect Settings** in Desk
+3. Create **Connect Hooks** for producer
+4. Create **Connect Event Handlers** for consumer
 5. Start consumer: `bench connect-consumer --site your-site`
+
 
 ## Architecture
 
